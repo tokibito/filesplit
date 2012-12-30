@@ -32,6 +32,7 @@ end;
 destructor TFileSplit.Destroy;
 begin
   FreeAndNil(FFileNames);
+  inherited Destroy;
 end;
 
 procedure TFileSplit.Main;
