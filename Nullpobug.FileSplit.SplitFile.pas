@@ -94,7 +94,7 @@ begin
             Inc(CopiedTotal, WroteSize);
             (* コピー元ファイルを最後まで読み込んだ場合は終了 *)
             if CopiedTotal = FileFrom.Size then
-              Break;
+              Exit;
             (* 分割サイズまでコピーした場合は次のファイルへ *)
             if CopiedSize = FSize then
             begin
@@ -102,11 +102,6 @@ begin
               Break;
             end;
           end;
-
-          (* コピー元ファイルを最後まで読み込んだ場合は終了 *)
-          if CopiedTotal = FileFrom.Size then
-            Break;
-
         finally
           FreeAndNil(FileTo);
         end;
