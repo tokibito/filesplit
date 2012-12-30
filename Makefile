@@ -6,3 +6,7 @@ win64:
 
 osx:
 	dccosx -$M+ filesplit.dpr
+
+clean:
+	del filesplit.exe
+	del filesplit
