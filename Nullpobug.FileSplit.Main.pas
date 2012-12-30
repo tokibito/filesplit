@@ -93,8 +93,8 @@ end;
 procedure TFileSplit.DisplayUsage;
 (* Žg‚¢•û‚ð•\Ž¦ *)
 begin
-  WriteLn('Usage:');
-  WriteLn('  ' + ExtractFileName(ParamStr(0)) + ' -s Size File');
+  Writeln('Usage:');
+  Writeln('  ' + ExtractFileName(ParamStr(0)) + ' -s Size File');
 end;
 
 procedure TFileSplit.CollectFileNames;

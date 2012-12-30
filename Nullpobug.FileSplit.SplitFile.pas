@@ -50,8 +50,13 @@ var
   Buffer: TMemoryStream;
   CopySize, ReadSize, WroteSize, CopiedSize, CopiedTotal: Int64;
 begin
-  WriteLn('Split size: ' + IntToStr(FSize));
-  WriteLn('Target file: ' + FFileName);
+  Writeln('Split size: ' + IntToStr(FSize));
+  Writeln('Target file: ' + FFileName);
+  if not FileExists(FFileName) then
+  begin
+    Writeln('Target file does not exist.');
+    Exit;
+  end;
   (* コピー用のバッファを用意 *)
   Buffer := TMemoryStream.Create;
   try
@@ -69,6 +74,7 @@ begin
         CopiedSize := 0;
         (* コピー先ファイル名を取得 *)
         FileNameTo := GetFileNameTo(FileNumber);
+        Writeln(Format('Creating %s...', [FileNameTo]));
         (* コピー先ファイルを開く *)
         FileTo := TFileStream.Create(FileNameTo, fmCreate);
         try
