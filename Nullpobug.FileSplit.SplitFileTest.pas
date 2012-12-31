@@ -14,6 +14,7 @@ type
   published
     procedure SetUp; override;
     procedure TearDown; override;
+    procedure TestGetFileNameTo;
   end;
 
 implementation
@@ -26,6 +27,11 @@ end;
 procedure TSplitFileTest.TearDown;
 begin
   FSplitFile.Free;
+end;
+
+procedure TSplitFileTest.TestGetFileNameTo;
+begin
+  AssertEquals(FSplitFile.GetFileNameTo(0), 'dummy.000');
 end;
 
 initialization
