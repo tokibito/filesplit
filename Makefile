@@ -10,6 +10,9 @@ osx:
 clean:
 	del filesplit.exe
 	del filesplit
+	del filesplit_test.exe
+	del filesplit_test.xml
 
-test:
+test: clean
 	dcc32 -$M+ filesplit_test.dpr
+	filesplit_test.exe
