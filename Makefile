@@ -10,3 +10,6 @@ osx:
 clean:
 	del filesplit.exe
 	del filesplit
+
+test:
+	dcc32 -$M+ filesplit_test.dpr
