@@ -1,4 +1,4 @@
-program TestProject;
+program filesplit_test;
 
 {$APPTYPE CONSOLE}
 
