@@ -12,7 +12,7 @@ const
 
 type
   TSplitFile = class
-  (* ƒtƒ@ƒCƒ‹•ªŠ„ˆ—‚ðs‚¤ƒNƒ‰ƒX *)
+  (* ãƒ•ã‚¡ã‚¤ãƒ«åˆ†å‰²å‡¦ç†ã‚’è¡Œã†ã‚¯ãƒ©ã‚¹ *)
   private
     FFileName: String;
     FSize: Int64;
@@ -35,14 +35,14 @@ begin
 end;
 
 function TSplitFile.GetFileNameTo(FileNumber: Integer): String;
-(* ƒRƒs[æ‚Ìƒtƒ@ƒCƒ‹–¼‚ðŽæ“¾‚·‚é *)
+(* ã‚³ãƒ”ãƒ¼å…ˆã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’å–å¾—ã™ã‚‹ *)
 begin
-  (* Œ³ƒtƒ@ƒCƒ‹‚Ì–¼‘O + .001 Œ`Ž® *)
+  (* å…ƒãƒ•ã‚¡ã‚¤ãƒ«ã®åå‰ + .001 å½¢å¼ *)
   Result := FFileName + '.' + Format('%.3d', [FileNumber]);
 end;
 
 procedure TSplitFile.Execute;
-(* •ªŠ„ˆ—‚ðŽÀs *)
+(* åˆ†å‰²å‡¦ç†ã‚’å®Ÿè¡Œ *)
 var
   FileNameTo: String;
   FileNumber: Integer;
@@ -57,7 +57,7 @@ begin
     Writeln('Target file does not exist.');
     Exit;
   end;
-  (* ƒRƒs[—p‚Ìƒoƒbƒtƒ@‚ð—pˆÓ *)
+  (* ã‚³ãƒ”ãƒ¼ç”¨ã®ãƒãƒƒãƒ•ã‚¡ã‚’ç”¨æ„ *)
   Buffer := TMemoryStream.Create;
   try
     Buffer.Size :=  FBufferSize;
@@ -65,37 +65,37 @@ begin
     FileNumber := 0;
     FileFrom := TFileStream.Create(FFileName, fmOpenRead);
     try
-      (* ƒRƒs[Œ³ƒtƒ@ƒCƒ‹‚ÌƒTƒCƒY‚ª0‚È‚çI—¹ *)
+      (* ã‚³ãƒ”ãƒ¼å…ƒãƒ•ã‚¡ã‚¤ãƒ«ã®ã‚µã‚¤ã‚ºãŒ0ãªã‚‰çµ‚äº† *)
       if FileFrom.Size = 0 then
         Exit;
       while True do
       begin
-        (* •ªŠ„ƒtƒ@ƒCƒ‹‚²‚Æ‚ÌƒRƒs[Ï‚ÝƒTƒCƒY‚ðƒŠƒZƒbƒg *)
+        (* åˆ†å‰²ãƒ•ã‚¡ã‚¤ãƒ«ã”ã¨ã®ã‚³ãƒ”ãƒ¼æ¸ˆã¿ã‚µã‚¤ã‚ºã‚’ãƒªã‚»ãƒƒãƒˆ *)
         CopiedSize := 0;
-        (* ƒRƒs[æƒtƒ@ƒCƒ‹–¼‚ðŽæ“¾ *)
+        (* ã‚³ãƒ”ãƒ¼å…ˆãƒ•ã‚¡ã‚¤ãƒ«åã‚’å–å¾— *)
         FileNameTo := GetFileNameTo(FileNumber);
         Writeln(Format('Creating %s...', [FileNameTo]));
-        (* ƒRƒs[æƒtƒ@ƒCƒ‹‚ðŠJ‚­ *)
+        (* ã‚³ãƒ”ãƒ¼å…ˆãƒ•ã‚¡ã‚¤ãƒ«ã‚’é–‹ã *)
         FileTo := TFileStream.Create(FileNameTo, fmCreate);
         try
           while True do
           begin
-            (* ƒRƒs[‚·‚éƒTƒCƒY‚ðŒˆ’è *)
+            (* ã‚³ãƒ”ãƒ¼ã™ã‚‹ã‚µã‚¤ã‚ºã‚’æ±ºå®š *)
             CopySize := FSize - CopiedSize;
-            (* ƒRƒs[‚·‚éƒTƒCƒY‚ª‘å‚«‚¢ê‡‚Íƒoƒbƒtƒ@ƒTƒCƒY‚ÌãŒÀ‚ðŽg‚¤ *)
+            (* ã‚³ãƒ”ãƒ¼ã™ã‚‹ã‚µã‚¤ã‚ºãŒå¤§ãã„å ´åˆã¯ãƒãƒƒãƒ•ã‚¡ã‚µã‚¤ã‚ºã®ä¸Šé™ã‚’ä½¿ã† *)
             if CopySize > FBufferSize then
               CopySize := FBufferSize;
-            (* ƒoƒbƒtƒ@‚É“Ç‚Ýž‚Ý *)
+            (* ãƒãƒƒãƒ•ã‚¡ã«èª­ã¿è¾¼ã¿ *)
             ReadSize := FileFrom.Read(Buffer.Memory^, CopySize);
-            (* ƒRƒs[æ‚Ö‘‚«ž‚Ý *)
+            (* ã‚³ãƒ”ãƒ¼å…ˆã¸æ›¸ãè¾¼ã¿ *)
             WroteSize := FileTo.Write(Buffer.Memory^, ReadSize);
-            (* ƒRƒs[Ï‚ÝƒTƒCƒY‚ðXV *)
+            (* ã‚³ãƒ”ãƒ¼æ¸ˆã¿ã‚µã‚¤ã‚ºã‚’æ›´æ–° *)
             Inc(CopiedSize, WroteSize);
             Inc(CopiedTotal, WroteSize);
-            (* ƒRƒs[Œ³ƒtƒ@ƒCƒ‹‚ðÅŒã‚Ü‚Å“Ç‚Ýž‚ñ‚¾ê‡‚ÍI—¹ *)
+            (* ã‚³ãƒ”ãƒ¼å…ƒãƒ•ã‚¡ã‚¤ãƒ«ã‚’æœ€å¾Œã¾ã§èª­ã¿è¾¼ã‚“ã å ´åˆã¯çµ‚äº† *)
             if CopiedTotal = FileFrom.Size then
               Exit;
-            (* •ªŠ„ƒTƒCƒY‚Ü‚ÅƒRƒs[‚µ‚½ê‡‚ÍŽŸ‚Ìƒtƒ@ƒCƒ‹‚Ö *)
+            (* åˆ†å‰²ã‚µã‚¤ã‚ºã¾ã§ã‚³ãƒ”ãƒ¼ã—ãŸå ´åˆã¯æ¬¡ã®ãƒ•ã‚¡ã‚¤ãƒ«ã¸ *)
             if CopiedSize = FSize then
             begin
               Inc(FileNumber);

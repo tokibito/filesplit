@@ -10,7 +10,7 @@ uses
 
 type
   TFileSplit = class
-  (* ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚ÌƒƒCƒ“ƒNƒ‰ƒX *)
+  (* ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ¡ã‚¤ãƒ³ã‚¯ãƒ©ã‚¹ *)
   private
     FFileNames: TList<String>;
   public
@@ -36,7 +36,7 @@ begin
 end;
 
 procedure TFileSplit.Main;
-(* ƒAƒvƒŠƒP[ƒVƒ‡ƒ“‚Í‚±‚±‚©‚çŠJn *)
+(* ã‚¢ãƒ—ãƒªã‚±ãƒ¼ã‚·ãƒ§ãƒ³ã¯ã“ã“ã‹ã‚‰é–‹å§‹ *)
 var
   SplitSizeStr: String;
   SplitSize: Int64;
@@ -48,21 +48,21 @@ begin
     DisplayUsage;
     Exit;
   end;
-  (* •ªŠ„ƒTƒCƒY‚ğæ“¾ *)
+  (* åˆ†å‰²ã‚µã‚¤ã‚ºã‚’å–å¾— *)
   SplitSize := ParseFileSize(SplitSizeStr);
   if SplitSize = 0 then
   begin
     DisplayUsage;
     Exit;
   end;
-  (* •ªŠ„‘ÎÛ‚Ìƒtƒ@ƒCƒ‹–¼‚ğæ“¾ *)
+  (* åˆ†å‰²å¯¾è±¡ã®ãƒ•ã‚¡ã‚¤ãƒ«åã‚’å–å¾— *)
   CollectFileNames;
   if FFileNames.Count = 0 then
   begin
     DisplayUsage;
     Exit;
   end;
-  (* w’èƒTƒCƒY‚Éƒtƒ@ƒCƒ‹‚ğ•ªŠ„ *)
+  (* æŒ‡å®šã‚µã‚¤ã‚ºã«ãƒ•ã‚¡ã‚¤ãƒ«ã‚’åˆ†å‰² *)
   for FileName in FFileNames do
   begin
     SplitFile := TSplitFile.Create(FileName, SplitSize);
@@ -75,7 +75,7 @@ begin
 end;
 
 function TFileSplit.ParseFileSize(SplitSizeStr: String): Int64;
-(* ƒtƒ@ƒCƒ‹ƒTƒCƒY‚Ì•¶š—ñ‚ğƒp[ƒX‚·‚é *)
+(* ãƒ•ã‚¡ã‚¤ãƒ«ã‚µã‚¤ã‚ºã®æ–‡å­—åˆ—ã‚’ãƒ‘ãƒ¼ã‚¹ã™ã‚‹ *)
 begin
   if SplitSizeStr = '' then
   begin
@@ -91,7 +91,7 @@ begin
 end;
 
 procedure TFileSplit.DisplayUsage;
-(* g‚¢•û‚ğ•\¦ *)
+(* ä½¿ã„æ–¹ã‚’è¡¨ç¤º *)
 begin
   Writeln('Usage:');
   Writeln('  ' + ExtractFileName(ParamStr(0)) + ' -s Size File');
