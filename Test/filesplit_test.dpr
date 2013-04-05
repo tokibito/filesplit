@@ -4,9 +4,9 @@ program filesplit_test;
 
 uses
   Nullpobug.UnitTest in '.\Nullpobug.UnitTest.pas'
-  , Nullpobug.FileSplit.SplitFile in '.\Nullpobug.FileSplit.SplitFile.pas'
+  , Nullpobug.FileSplit.SplitFile in '..\Source\Nullpobug.FileSplit.SplitFile.pas'
   , Nullpobug.FileSplit.SplitFileTest in '.\Nullpobug.FileSplit.SplitFileTest.pas'
-  , Nullpobug.FileSplit.Main in '.\Nullpobug.FileSplit.Main.pas'
+  , Nullpobug.FileSplit.Main in '..\Source\Nullpobug.FileSplit.Main.pas'
   , Nullpobug.FileSplit.MainTest in '.\Nullpobug.FileSplit.MainTest.pas'
   ;
 
