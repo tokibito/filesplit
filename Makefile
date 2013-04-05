@@ -16,8 +16,8 @@ osx:
 clean:
 	if exist Build\filesplit.exe del Build\filesplit.exe
 	if exist Build\filesplit del Build\filesplit
-	del Test\filesplit_test.exe
-	del Test\filesplit_test.xml
+	if exist Test\filesplit_test.exe del Test\filesplit_test.exe
+	if exist Test\filesplit_test.xml del Test\filesplit_test.xml
 
 test: clean
 	cd Test
