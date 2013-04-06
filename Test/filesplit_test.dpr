@@ -12,5 +12,6 @@ uses
   ;
 
 begin
+  ReportMemoryLeaksOnShutdown := True;
   Nullpobug.UnitTest.RunTest('filesplit_test.xml');
 end.
