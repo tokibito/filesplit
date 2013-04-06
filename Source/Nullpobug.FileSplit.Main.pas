@@ -6,6 +6,7 @@ uses
   System.SysUtils
   , System.Generics.Collections
   , Nullpobug.FileSplit.SplitFile
+  , Nullpobug.ArgumentParser
   ;
 
 type
@@ -38,18 +39,34 @@ end;
 procedure TFileSplit.Main;
 (* アプリケーションはここから開始 *)
 var
-  SplitSizeStr: String;
   SplitSize: Int64;
   SplitFile: TSplitFile;
   FileName: String;
+  ArgumentParser: TArgumentParser;
+  ParseResult: IParseResult;
 begin
-  if not FindCmdLineSwitch('s', SplitSizeStr, False) then
+  ArgumentParser := TArgumentParser.Create;
+  try
+    ArgumentParser.AddArgument('-s', saStore);
+    try
+      ParseResult := ArgumentParser.ParseArgs;
+    finally
+      ArgumentParser.Free;
+    end;
+  except
+    on EParseError do
+      begin
+        DisplayUsage;
+        Exit;
+      end;
+  end;
+  if not ParseResult.HasArgument('s') then
   begin
     DisplayUsage;
     Exit;
   end;
   (* 分割サイズを取得 *)
-  SplitSize := ParseFileSize(SplitSizeStr);
+  SplitSize := ParseFileSize(ParseResult.GetValue('s'));
   if SplitSize = 0 then
   begin
     DisplayUsage;

@@ -8,6 +8,7 @@ uses
   , Nullpobug.FileSplit.SplitFileTest in '.\Nullpobug.FileSplit.SplitFileTest.pas'
   , Nullpobug.FileSplit.Main in '..\Source\Nullpobug.FileSplit.Main.pas'
   , Nullpobug.FileSplit.MainTest in '.\Nullpobug.FileSplit.MainTest.pas'
+  , Nullpobug.ArgumentParser in '..\Source\Nullpobug.ArgumentParser.pas'
   ;
 
 begin

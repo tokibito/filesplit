@@ -5,6 +5,7 @@ program filesplit;
 uses
   Nullpobug.FileSplit.Main in '.\Nullpobug.FileSplit.Main.pas'
   , Nullpobug.FileSplit.SplitFile in '.\Nullpobug.FileSplit.SplitFile.pas'
+  , Nullpobug.ArgumentParser in '.\Nullpobug.ArgumentParser.pas'
   ;
 
 var
